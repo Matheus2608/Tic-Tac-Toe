@@ -89,7 +89,7 @@ def winner(board):
         if all(board[i][j] == O for i in range(3)):
             return O
     if board[0][0] == O and board[1][1] == O and board[2][2] == O:
-        return X
+        return O
     if board[0][2] == O and board[1][1] == O and board[2][0] == O:
         return O
 
@@ -121,31 +121,35 @@ def utility(board):
 
 
 def max_value(board):
-    some_actions = {}
+    max_actions = {}
     if terminal(board):
         #print(f"returned {utility(board)}, None")
         return utility(board), None
     v = -2
     for action in actions(board):
         temporary, _ = min_value(result(board, action))
-        some_actions[action] = temporary
-    best_action = max(some_actions, key=some_actions.get)
-    print(some_actions)
-    return some_actions[best_action], best_action
+        if temporary == 1:
+            return temporary, action
+        max_actions[action] = temporary
+    best_action = max(max_actions, key=max_actions.get)
+    print(max_actions)
+    return max_actions[best_action], best_action
 
 
 def min_value(board):
     if terminal(board):
         #print(f"returned {utility(board)}, None")
         return utility(board), None
-    some_actions = {}
+    min_actions = {}
     v = 2
     for action in actions(board):
         temporary, _ = max_value(result(board, action))
-        some_actions[action] = temporary
-    best_action = max(some_actions, key=some_actions.get)
-    print(some_actions)
-    return some_actions[best_action], best_action
+        if temporary == -1:
+            return temporary, action
+        min_actions[action] = temporary
+    best_action = min(min_actions, key=min_actions.get)
+    print(min_actions)
+    return min_actions[best_action], best_action
 
 
 def minimax(board):
@@ -161,3 +165,14 @@ def minimax(board):
         _, final_action = min_value(board)
     print(final_action)
     return final_action
+
+
+board = initial_state()
+board[2][2] = O
+board[2][0] = X
+board[1][2] = X
+board[1][1] = O
+board[0][0] = O
+board[1][0] = X
+board[2][1] = O
+print(utility(board))
