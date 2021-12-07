@@ -121,30 +121,42 @@ def utility(board):
 
 
 def max_value(board):
+    some_actions = {}
     if terminal(board):
+        #print(f"returned {utility(board)}, None")
         return utility(board), None
     v = -2
     for action in actions(board):
-        temporary, _ = min_value(result(board, action))
+        temporary, something = min_value(result(board, action))
+        # if temporary == 1 and something is None:
+        #     return temporary, action
         # if temporary == 1:
         #     return temporary, action
         if temporary >= v:
             v = temporary
             final_action = action
+
+    #print(f"returned {v}, {final_action}")
+    if len(some_actions) == 8:
+        print(some_actions)
     return v, final_action
 
 
 def min_value(board):
     if terminal(board):
+        #print(f"returned {utility(board)}, None")
         return utility(board), None
     v = 2
     for action in actions(board):
-        temporary, _ = max_value(result(board, action))
+        temporary, something = max_value(result(board, action))
+        # if temporary == -1 and something is None:
+        #     return temporary, action
         # if temporary == -1:
         #     return temporary, action
         if temporary <= v:
             v = temporary
             final_action = action
+    #print(f"returned {v}, {final_action}")
     return v, final_action
 
 
@@ -159,13 +171,22 @@ def minimax(board):
         _, final_action = max_value(board)
     else:
         _, final_action = min_value(board)
+    print(final_action)
     return final_action
 
 
 board = initial_state()
-board[0][1] = O
-board[0][2] = X
-board[1][1] = X
-board[1][2] = O
+# board[0][1] = O
+# board[0][2] = X
+# board[1][1] = X
+# board[1][2] = O
 
-print(minimax(board))
+# board[0][0] = X
+# board[0][1] = O
+# board[0][2] = X
+# board[1][1] = X
+# board[1][0] = O
+# board[1][1] = X
+# board[2][2] = O
+
+board[0][2] = O
