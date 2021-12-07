@@ -165,14 +165,3 @@ def minimax(board):
         _, final_action = min_value(board)
     print(final_action)
     return final_action
-
-
-board = initial_state()
-board[2][2] = O
-board[2][0] = X
-board[1][2] = X
-board[1][1] = O
-board[0][0] = O
-board[1][0] = X
-board[2][1] = O
-print(utility(board))
