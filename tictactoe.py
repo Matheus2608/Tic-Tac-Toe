@@ -121,25 +121,31 @@ def utility(board):
 
 
 def max_value(board):
-    max_actions = {}
+    # if the game ended, return who won
     if terminal(board):
         #print(f"returned {utility(board)}, None")
         return utility(board), None
+
+    # put the actions reult in the dictionary and return the one that maximizes the result of min_value
     v = -2
+    max_actions = {}
     for action in actions(board):
         temporary, _ = min_value(result(board, action))
         if temporary == 1:
             return temporary, action
         max_actions[action] = temporary
     best_action = max(max_actions, key=max_actions.get)
-    print(max_actions)
+    # print(max_actions)
     return max_actions[best_action], best_action
 
 
 def min_value(board):
+    # if the game ended, return who won
     if terminal(board):
         #print(f"returned {utility(board)}, None")
         return utility(board), None
+
+    # put the actions reult in the dictionary and return the one that minimizes the result of max_value
     min_actions = {}
     v = 2
     for action in actions(board):
@@ -148,7 +154,7 @@ def min_value(board):
             return temporary, action
         min_actions[action] = temporary
     best_action = min(min_actions, key=min_actions.get)
-    print(min_actions)
+    # print(min_actions)
     return min_actions[best_action], best_action
 
 
@@ -163,5 +169,5 @@ def minimax(board):
         _, final_action = max_value(board)
     else:
         _, final_action = min_value(board)
-    print(final_action)
+    # print(final_action)
     return final_action
