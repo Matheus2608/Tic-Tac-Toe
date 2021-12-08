@@ -5,6 +5,7 @@ This repository is my solution to [Tic-Tac-Toe project](https://cs50.harvard.edu
 - Clone the repository using git clone 
 - Install the dependencies listed on requirements.txt
 - Run "python runner.py" on your terminal to play against my AI!
+
 Observation: Let me know if you beat my AI!
 
 ## 🔎 Understanding:
