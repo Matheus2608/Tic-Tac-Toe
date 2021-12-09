@@ -1,6 +1,6 @@
 # Tic-Tac-Toe
 This repository is my solution to [Tic-Tac-Toe project](https://cs50.harvard.edu/ai/2020/projects/0/tictactoe/) of [Introduction to Articial Intelligence with Python](https://learning.edx.org/course/course-v1:HarvardX+CS50AI+1T2020/home) course by Harvard.
-
+<img src="https://cs50.harvard.edu/ai/2020/projects/0/tictactoe/images/game.png">
 ## 🚀 How to execute:
 - Clone the repository using git clone 
 - Install the dependencies listed on requirements.txt
